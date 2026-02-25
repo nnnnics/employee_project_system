@@ -1,0 +1,26 @@
+<h1>Employee Project System (ERD)</h1>
+
+<h2>Employees</h2>
+<ul>
+{% for e in employees %}
+  <li>{{ e.name }} 
+  <a href="{% url 'delete_employee' e.employee_id %}">Delete</a></li>
+{% endfor %}
+</ul>
+<a href="{% url 'add_employee' %}">Add Employee</a>
+
+<h2>Departments</h2>
+<ul>
+{% for d in departments %}
+  <li>{{ d.department_name }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'add_department' %}">Add Department</a>
+
+<h2>Projects</h2>
+<ul>
+{% for p in projects %}
+  <li>{{ p.project_name }} - {{ p.department.department_name }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'add_project' %}">Add Project</a>
