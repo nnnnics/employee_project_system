@@ -50,3 +50,23 @@ def delete_employee(request, id):
     employee = get_object_or_404(Employee, pk=id)
     employee.delete()
     return redirect('dashboard')
+
+#DRF
+from rest_framework import viewsets
+from .serializers import EmployeeSerializer, DepartmentSerializer, ProjectSerializer, EmployeeProjectSerializer
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+class DepartmentViewSet(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+class EmployeeProjectViewSet(viewsets.ModelViewSet):
+    queryset = EmployeeProject.objects.all()
+    serializer_class = EmployeeProjectSerializer
